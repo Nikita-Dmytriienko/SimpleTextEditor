@@ -119,7 +119,8 @@ void SaveDocument(const std::string& text)
 
 void ShowMenu()
 {
-	std::cout << "Text Editor Menu:" << std::endl;
+	std::cout << "Text Editor Menu:" << std::endl << std::endl;
+	std::cout << "Choose from this options:" << std::endl;
 	std::cout << "1.New document" << std::endl;
 	std::cout << "2.Open an existing document " << std::endl;
 	std::cout << "3.Save the document" << std::endl;
@@ -134,9 +135,7 @@ int main()
 	int choice;
 	do
 	{
-		ShowMenu();							//function ShowMenu
-		std::cout << "Choose:";
-		
+		ShowMenu();							//function ShowMenг
 		std::cin >> choice;
 
 		switch (choice)

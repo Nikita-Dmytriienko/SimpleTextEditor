@@ -60,6 +60,7 @@
 
 void ShowMenu()
 {
+	std::cout << "Text Editor Menu:" << std::endl;
 	std::cout << "New document" << std::endl;
 	std::cout << "Open an existing document " << std::endl;
 	std::cout << "Save the document" << std::endl;
@@ -83,9 +84,26 @@ int main()
 				Открыть существующий документ
 				Сохранить документ
 				Выйти из редактора*/
-		case '1':
+		case 1:
 		{
-			
+
+			break;
+		}
+
+		case 2:
+		{
+
+			break;
+		}
+		case 3:
+		{
+
+			break;
+		}
+		case 4:
+		{
+			std::cout << "Exiting the text editor." << std::endl;
+			return 0;
 		}
 
 		default:

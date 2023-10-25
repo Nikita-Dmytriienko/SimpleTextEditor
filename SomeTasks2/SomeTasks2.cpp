@@ -57,6 +57,8 @@
 
 Соберите ваш проект и убедитесь, что он готов к использованию.*/
 #include <iostream>
+#include <fstream>
+#include <string>
 
 void ShowMenu()
 {
@@ -71,13 +73,15 @@ void ShowMenu()
 
 int main()
 {
-
+	std::string document;
+	int choice;
 	do
 	{
 		ShowMenu();							//function ShowMenu
 		std::cout << "Choose:";
-		int choice;
+		
 		std::cin >> choice;
+
 		switch (choice)
 		{
 			/*Новый документ
@@ -107,15 +111,12 @@ int main()
 		}
 
 		default:
+			std::cout << "Invalid choice. Please choose again." << std::endl;
 			break;
 		}
 
 
 	} while (true);
 
-
-
-
-    system("void << pause");
     return 0;
 }

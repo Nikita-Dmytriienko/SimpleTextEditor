@@ -60,13 +60,70 @@
 #include <fstream>
 #include <string>
 
+void CreateNewDocument()
+{
+	std::string text;
+	std::cout << "Enter your text. Type '##' on a new line to finish: " << std::endl;
+
+	std::string line;
+	while (getline(std::cin, line) && line != "##")
+	{
+		text += line + "\n";
+	}
+
+	// You can now work with the 'text' string to perform operations.
+}
+
+void OpenExistingDocument()
+{
+	std::string filename;
+	std::cout << "Enter the filename to open: ";
+	std::cin >> filename;
+
+	std::ifstream file(filename);
+	if (file.is_open())
+	{
+		std::string text;
+		std::string line;
+		while (getline(file, line))
+		{
+			text += line + "\n";
+		}
+		file.close();
+		// You can now work with the 'text' string to perform operations.
+	}
+	else
+	{
+		std::cout << "Error: Unable to open the file." << std::endl;
+	}
+}
+
+void SaveDocument(const std::string& text)
+{
+	std::string filename;
+	std::cout << "Enter the filename to save: ";
+	std::cin >> filename;
+
+	std::ofstream file(filename);
+	if (file.is_open())
+	{
+		file << text;
+		file.close();
+		std::cout << "Document saved successfully." << std::endl;
+	}
+	else
+	{
+		std::cout << "Error: Unable to save the file." << std::endl;
+	}
+}
+
 void ShowMenu()
 {
 	std::cout << "Text Editor Menu:" << std::endl;
-	std::cout << "New document" << std::endl;
-	std::cout << "Open an existing document " << std::endl;
-	std::cout << "Save the document" << std::endl;
-	std::cout << "Exit" << std::endl;
+	std::cout << "1.New document" << std::endl;
+	std::cout << "2.Open an existing document " << std::endl;
+	std::cout << "3.Save the document" << std::endl;
+	std::cout << "4.Exit" << std::endl;
 
 
 }
@@ -90,18 +147,18 @@ int main()
 				Выйти из редактора*/
 		case 1:
 		{
-
+			CreateNewDocument();
 			break;
 		}
 
 		case 2:
 		{
-
+			OpenExistingDocument();
 			break;
 		}
 		case 3:
 		{
-
+			SaveDocument(document);
 			break;
 		}
 		case 4:

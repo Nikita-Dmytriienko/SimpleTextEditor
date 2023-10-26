@@ -60,7 +60,7 @@
 #include <fstream>
 #include <string>
 
-void CreateNewDocument()
+void CreateNewDocument(std::string& document)
 {
 	std::string text;
 	std::cout << "Enter your text. Type '##' on a new line to finish: " << std::endl;
@@ -70,30 +70,11 @@ void CreateNewDocument()
 	{
 		text += line + "\n";
 	}
-
-	std::string filename;
-	std::cout << "Enter the filename to save (including .txt extension): ";
-	std::cin >> filename;
-
-	// Добавляем ".txt" к имени файла, если его нет
-	if (filename.rfind(".txt") == std::string::npos) {
-		filename += ".txt";
-	}
-
-	std::ofstream file(filename);
-	if (file.is_open())
-	{
-		file << text;
-		file.close();
-		std::cout << "Document saved successfully as " << filename << std::endl;
-	}
-	else
-	{
-		std::cout << "Error: Unable to save the file." << std::endl;
-	}
+	// Сохраняем текст в текущий документ
+	document = text;
 }
 
-void OpenExistingDocument()
+void OpenExistingDocument(std::string& document)
 {
 	std::string filename;
 	std::cout << "Enter the filename to open: ";
@@ -171,19 +152,15 @@ int main()
 
 		switch (choice)
 		{
-			/*Новый документ
-				Открыть существующий документ
-				Сохранить документ
-				Выйти из редактора*/
 		case 1:
 		{
-			CreateNewDocument();
+			CreateNewDocument(document);
 			break;
 		}
 
 		case 2:
 		{
-			OpenExistingDocument();
+			OpenExistingDocument(document);
 			break;
 		}
 		case 3:
@@ -194,6 +171,7 @@ int main()
 		case 4:
 		{
 			EditTheDocument(document);
+			break;
 		}
 		case 5:
 		{

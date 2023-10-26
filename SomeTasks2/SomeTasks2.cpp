@@ -115,9 +115,18 @@ void SaveDocument(const std::string& text)
 	}
 }
 
-void EditTheDocument()
+void EditTheDocument(std::string &document)
 {
+	std::string newText;
+	std::cout<<"Enter the new text to replace the current content.\nType '##' on a new line to finish: " << std::endl;
+	std::string line;
+	while (getline(std::cin, line) && line != "##")
+	{
+		newText += line + "\n";
+	}
+	document = newText;
 
+	std::cout << "Document has been edited." << std::endl;
 }
 
 void ShowMenu()
@@ -170,7 +179,7 @@ int main()
 		}
 		case 5:
 		{
-			EditTheDocument();
+			EditTheDocument(document);
 		}
 
 		default:

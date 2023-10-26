@@ -70,8 +70,7 @@ void CreateNewDocument()
 	{
 		text += line + "\n";
 	}
-
-	// You can now work with the 'text' string to perform operations.
+	
 }
 
 void OpenExistingDocument()
@@ -90,7 +89,6 @@ void OpenExistingDocument()
 			text += line + "\n";
 		}
 		file.close();
-		// You can now work with the 'text' string to perform operations.
 	}
 	else
 	{
@@ -105,7 +103,7 @@ void SaveDocument(const std::string& text)
 	std::cin >> filename;
 
 	std::ofstream file(filename);
-	if (file.is_open())
+	if(file.is_open())
 	{
 		file << text;
 		file.close();
@@ -115,6 +113,11 @@ void SaveDocument(const std::string& text)
 	{
 		std::cout << "Error: Unable to save the file." << std::endl;
 	}
+}
+
+void EditTheDocument()
+{
+
 }
 
 void ShowMenu()
@@ -135,7 +138,7 @@ int main()
 	int choice;
 	do
 	{
-		ShowMenu();							//function ShowMenг
+		ShowMenu();							//function ShowMenu
 		std::cin >> choice;
 
 		switch (choice)
@@ -164,6 +167,10 @@ int main()
 		{
 			std::cout << "Exiting the text editor." << std::endl;
 			return 0;
+		}
+		case 5:
+		{
+			EditTheDocument();
 		}
 
 		default:

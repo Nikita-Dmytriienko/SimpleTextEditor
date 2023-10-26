@@ -90,6 +90,7 @@ void OpenExistingDocument(std::string& document)
 			text += line + "\n";
 		}
 		file.close();
+		document = text;
 	}
 	else
 	{
@@ -102,6 +103,12 @@ void SaveDocument(const std::string& text)
 	std::string filename;
 	std::cout << "Enter the filename to save: ";
 	std::cin >> filename;
+
+	// Добавляем ".txt" к имени файла, если его нет
+	if (filename.rfind(".txt") == std::string::npos)
+	{
+		filename += ".txt";
+	}
 
 	std::ofstream file(filename);
 	if(file.is_open())
@@ -133,14 +140,13 @@ void EditTheDocument(std::string &document)
 void ShowMenu()
 {
 	std::cout << "Text Editor Menu:" << std::endl << std::endl;
-	std::cout << "Choose from this options:" << std::endl;
-	std::cout << "1.New document" << std::endl;
-	std::cout << "2.Open an existing document " << std::endl;
-	std::cout << "3.Save the document" << std::endl;
-	std::cout << "4.Edit file" << std::endl;
-	std::cout << "5.Exit" << std::endl;
+	std::cout << "Choose from these options:" << std::endl;
+	std::cout << "1. New document" << std::endl;
+	std::cout << "2. Open an existing document" << std::endl;
+	std::cout << "3. Save the document" << std::endl;
+	std::cout << "4. Edit document" << std::endl;
+	std::cout << "5. Exit" << std::endl;
 }
-
 int main()
 {
 	std::string document;

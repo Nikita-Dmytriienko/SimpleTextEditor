@@ -70,7 +70,27 @@ void CreateNewDocument()
 	{
 		text += line + "\n";
 	}
-	
+
+	std::string filename;
+	std::cout << "Enter the filename to save (including .txt extension): ";
+	std::cin >> filename;
+
+	// Добавляем ".txt" к имени файла, если его нет
+	if (filename.rfind(".txt") == std::string::npos) {
+		filename += ".txt";
+	}
+
+	std::ofstream file(filename);
+	if (file.is_open())
+	{
+		file << text;
+		file.close();
+		std::cout << "Document saved successfully as " << filename << std::endl;
+	}
+	else
+	{
+		std::cout << "Error: Unable to save the file." << std::endl;
+	}
 }
 
 void OpenExistingDocument()
@@ -136,9 +156,8 @@ void ShowMenu()
 	std::cout << "1.New document" << std::endl;
 	std::cout << "2.Open an existing document " << std::endl;
 	std::cout << "3.Save the document" << std::endl;
-	std::cout << "4.Exit" << std::endl;
-
-
+	std::cout << "4.Edit file" << std::endl;
+	std::cout << "5.Exit" << std::endl;
 }
 
 int main()
@@ -174,14 +193,13 @@ int main()
 		}
 		case 4:
 		{
-			std::cout << "Exiting the text editor." << std::endl;
-			return 0;
+			EditTheDocument(document);
 		}
 		case 5:
 		{
-			EditTheDocument(document);
+			std::cout << "Exiting the text editor." << std::endl;
+			return 0;
 		}
-
 		default:
 			std::cout << "Invalid choice. Please choose again." << std::endl;
 			break;
